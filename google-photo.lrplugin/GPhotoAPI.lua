@@ -203,6 +203,7 @@ function GPhotoAPI.uploadPhoto( propertyTable, params )
 	local headers = auth_header(propertyTable)
 	headers[#headers+1] = { field = 'Content-Type', value = 'application/octet-stream'}
 	headers[#headers+1] = { field = 'X-Goog-Upload-File-Name', value = fileName }
+	headers[#headers+1] = { field = 'X-Goog-Upload-Protocol', value = 'raw' }
 
 	local image = LrFileUtils.readFile( filePath )
 	local resultRaw, hdrs
