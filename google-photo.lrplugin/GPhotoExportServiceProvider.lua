@@ -286,8 +286,9 @@ function exportServiceProvider.processRenderedPhotos( functionContext, exportCon
 
 			if success then
 				-- Build up common metadata for this photo.
-				--local title = getGPhotoTitle( photo, exportSettings, pathOrMessage )
-				local title = photo:getFormattedMetadata( 'title' )
+				-- Hard code photo title to IPTC Title
+				exportSettings.titleFirstChoice = 'title'
+				local title = getGPhotoTitle( photo, exportSettings, pathOrMessage )
 
 				local description = photo:getFormattedMetadata( 'caption' )
 				local keywordTags = photo:getFormattedMetadata( 'keywordTagsForExport' )
